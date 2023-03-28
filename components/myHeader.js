@@ -56,12 +56,15 @@ export default{
         worker.postMessage(opcion);
 
         worker.onmessage = (event) =>{
+            let data ;
             switch (event.data[0]) {
                 case 1:
-                    document.querySelector("#header").insertAdjacentHTML("beforeend",event.data[1]);
+                    data = new DOMParser().parseFromString(event.data[1], "text/html");
+                    document.querySelector("#header").append(...data.body.children);
                     break;
                 case 2:
-                    document.querySelector("#listFundadores").insertAdjacentHTML("beforeend",event.data[1]);
+                    data = new DOMParser().parseFromString(event.data[1], "text/html");
+                    document.querySelector("#listFundadores").append(...data.body.children);
                     break;
                 default:
                     console.log("Error");

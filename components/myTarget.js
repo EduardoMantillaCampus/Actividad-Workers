@@ -36,7 +36,7 @@ export default{
         let worker = new Worker('storage/wsMyTarget.js');
         worker.postMessage(this.data);
         worker.onmessage=(event)=>{
-            console.log(event.data);
+            
             document.querySelector("#target").insertAdjacentHTML("beforeend",event.data);
         }
         
