@@ -1,5 +1,7 @@
+import config from '../storage/config/data.js';
+
 export default{
-    data:[
+    /* data:[
         {
             title: "World",
             article :"Featured post",
@@ -31,8 +33,10 @@ export default{
             url: "https:www.google.com",
             img: "./assets/dist/img/SmarthWatch.jpg"
         }
-    ],
+    ], */
     showTarget(){
+        config.dataMySlider();
+        Object.assign(this, JSON.parse(localStorage.getItem("dataMyTarget")));
         let worker = new Worker('storage/wsMyTarget.js');
         worker.postMessage(this.data);
         worker.onmessage=(event)=>{

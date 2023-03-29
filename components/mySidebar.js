@@ -1,5 +1,7 @@
+import config from '../storage/config/data.js';
+
 export default{
-    data:
+    /* data:
     {
         title:"About",
         content:"Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.",
@@ -30,8 +32,12 @@ export default{
                 ]
             }
         ]
-    },
+    }, */
     showAbout(){
+
+        config.dataMySidebar();
+        Object.assign(this, JSON.parse(localStorage.getItem("dataMySidebar")));
+
         let worker = new Worker('storage/wsMySidebar.js');
         worker.postMessage(this.data)
         worker.onmessage = (event) =>{

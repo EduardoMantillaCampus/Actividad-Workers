@@ -1,5 +1,7 @@
+import config from '../storage/config/data.js';
+
 export default{
-    data:
+    /* data:
     {
         title: "From the Firehose",
         article:[
@@ -39,8 +41,12 @@ export default{
                 contentArticle: `This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.`
             }
         ]
-    },
+    }, */
     showBody(){
+
+        config.dataMyBody();
+        Object.assign(this, JSON.parse(localStorage.getItem("dataMyBody")));
+
         let worker = new Worker('storage/wsMyBody.js');
         worker.postMessage(this.data);
 

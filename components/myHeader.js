@@ -1,5 +1,7 @@
+import config from '../storage/config/data.js';
+
 export default{
-    title:"Apple",
+    /* title:"Apple",
     fundadores:[
         {
             name:"Steve Jobs",
@@ -17,8 +19,8 @@ export default{
             name:"Mike Markkula",
             url:"https://es.wikipedia.org/wiki/Mike_Markkula"
         }
-    ],
-    /*showFundadores(){
+    ], */
+    /* showFundadores(){
         let data ="";
             this.fundadores.forEach((val,id) => {
                 data+=`<a class="p-2 link-secondary" target="t_blank" href="${val.url}">${val.name+ "--"+ id}</a>`
@@ -45,8 +47,12 @@ export default{
         </div>
         `;
         document.querySelector("#header").insertAdjacentHTML("beforeend",plantilla);
-    },*/
+    }, */
     fragShow(){
+
+        config.dataMyHeader();
+        Object.assign(this, JSON.parse(localStorage.getItem("dataMyHeader")));
+
         let worker = new Worker('storage/wsMyHeader.js');  
 
         let opcion = [1,this.title]  
